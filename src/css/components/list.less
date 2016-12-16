@@ -1,0 +1,49 @@
+.react.list{
+    .react.listitem{
+        position: relative;
+        box-sizing: border-box;
+        border-right-width: 4px;
+        border-right-style: solid; 
+        padding-left: 40px;
+        padding-right: 50px;
+        margin-bottom: 1px;
+        margin-top: -1px;
+        border-top: 1px solid @dark-color;
+        
+        img{
+            max-width: 100%;
+            max-height: 15vh;
+        }
+
+        .title{
+            font-size: x-large;
+            text-transform: uppercase;
+            padding-left: 40px;
+            margin-left: -40px;
+            background: url(./img/point.png) no-repeat 15px center;
+            &.has-children{
+                background-image: url(./img/plus.png);
+            }
+        }
+
+        .serial{
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            vertical-align: middle;
+            z-index: 1;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 100%;
+        }
+
+        .children{
+            margin-right: -54px;
+        }
+    }
+}

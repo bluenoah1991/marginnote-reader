@@ -1,0 +1,68 @@
+@import "./vendors/normalize.less";
+@import "./vendors/preboot.less";
+
+@import './base.less';
+
+@import './components/fluid.less';
+@import './components/iconbtn.less';
+@import './components/tabs.less';
+@import './components/list.less';
+
+*{
+    .font();
+}
+
+body{
+    background: @blank-color;
+}
+
+.fix-top{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.fix-top-2{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 70;
+    z-index: 999;
+}
+
+.fix-bottom{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.fix-body{
+    margin-top: 117px;
+    margin-bottom: 71px;
+}
+
+.notebook-toolbar{
+    background: @dark-color;
+}
+
+.notebook-bottom-toolbar{
+    background: @light-color;
+    border-top: 1px solid @dark-color;
+}
+
+.notebook-tabs-box{
+    text-align: center;
+    padding: 4px 0;
+    background: @light-color;
+    border-bottom: 1px solid @dark-color;
+
+    .react.tabs{
+        li{
+            width: 28vw !important;
+        }
+    }
+}

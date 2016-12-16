@@ -76,9 +76,9 @@ var webpackConfig = {
         ],
         resolve: {
             extensions: ['', '.jsx', '.js']
-        },
-        watch: webpackWatch
-    }
+        }
+    },
+    watch: webpackWatch
 };
 
 if(process.env.NOTIFY === 'true'){
@@ -187,6 +187,7 @@ gulp.task('browsersync', function(){
 });
 
 gulp.task('watch', function(){
+    gulp.watch(dirs.src + '/' + files.index, ['index']);
     gulp.watch(dirs.styles + '/**/*', ['less']);
     gulp.watch(dirs.img + '/**/*.*', ['images']);
     gulp.watch(dirs.fonts + '/**/*.*', ['fonts']);

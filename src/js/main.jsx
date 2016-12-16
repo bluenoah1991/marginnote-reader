@@ -18,10 +18,8 @@ let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route name='home' path='/' component={HomeComponent} />
-            <Route name='notebook' path='/notebook/:id' component={NoteBookComponent}>
-
-            </Route>
+            <Route name='home' path='/xxx' component={HomeComponent} />
+            <Route name='notebook' path='/' component={NoteBookComponent} />
         </Router>
     </Provider>,
     document.getElementById('marginnote')
