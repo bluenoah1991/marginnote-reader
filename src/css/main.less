@@ -7,6 +7,7 @@
 @import './components/iconbtn.less';
 @import './components/tabs.less';
 @import './components/list.less';
+@import './components/mindmap.less';
 
 *{
     .font();
@@ -24,14 +25,6 @@ body{
     z-index: 999;
 }
 
-.fix-top-2{
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 70;
-    z-index: 999;
-}
-
 .fix-bottom{
     position: fixed;
     left: 0;
@@ -40,7 +33,16 @@ body{
     z-index: 999;
 }
 
+.fix-body-top{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 70;
+    z-index: 999;
+}
+
 .fix-body{
+    width: 100%;
     margin-top: 117px;
     margin-bottom: 71px;
 }

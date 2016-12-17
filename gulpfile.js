@@ -16,6 +16,8 @@ var dirs = {
     src: './src',
     dist: './dist',
     js: './src/js',
+    jsVendors: './src/js/vendors',
+    jsVendorsDist: 'vendors',
     styles: './src/css',
     img: './src/img',
     imgDist: 'img',
@@ -169,6 +171,11 @@ gulp.task('replace-js-strings', ['webpack', 'minify-js'], function(){
         .pipe(gulp.dest(dirs.dist));
 });
 
+gulp.task('vendors', function(){
+    return gulp.src(dirs.jsVendors + '/**/*.*')
+        .pipe(gulp.dest(dirs.dist + '/' + dirs.jsVendorsDist));
+});
+
 // main tasks
 
 gulp.task('connect:server', function(){
@@ -201,7 +208,8 @@ var tasks = [
     'less',
     'images',
     'fonts',
-    'index'
+    'index',
+    'vendors'
 ];
 
 if(process.env.GULP_ENV === 'production'){

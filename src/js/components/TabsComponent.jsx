@@ -5,7 +5,7 @@ export default class TabsComponent extends Component{
         let items = _.map(this.props.tabs, function(tab, index){
             return (
                 <li key={index}>
-                    <a href="javascript:;">{tab.text}</a>
+                    <a href={tab.href}>{tab.text}</a>
                 </li>
             );
         });
