@@ -1,9 +1,9 @@
 import ViewModeActionTypes from './ViewModeActionTypes';
 
-export function switchViewMode(view_mode){
+export function switchViewMode(viewmode){
     const action = {
-        type: ViewModeActionTypes.SWITCH_VIEW_MODE,
-        view_mode: view_mode
+        type: ViewModeActionTypes.SWITCH_VIEWMODE,
+        viewmode: viewmode
     };
     return action;
 }

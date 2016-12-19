@@ -1,3 +1,5 @@
+"use strict";
+
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
@@ -21,11 +23,11 @@ let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route name='home' path='/xxx' component={HomeComponent} />
-            <Route name='notebook' path='/' component={NoteBookComponent}>
-                <Route name='topology-view' path='/topology' component={TopologyViewComponent}>
-                    <Route name='outline-view' path='/outline' component={OutlineViewComponent} />
-                    <Route name='mindmap-view' path='/mindmap' component={MindMapViewComponent} />
+            <Route name='home' path='/' component={HomeComponent} />
+            <Route name='notebook' path='/notebook/:id' component={NoteBookComponent}>
+                <Route name='topology-view' path='/notebook/:id/topology' component={TopologyViewComponent}>
+                    <Route name='outline-view' path='/notebook/:id/outline' component={OutlineViewComponent} />
+                    <Route name='mindmap-view' path='/notebook/:id/mindmap' component={MindMapViewComponent} />
                 </Route>
             </Route>
         </Router>

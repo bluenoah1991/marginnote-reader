@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 
 import ViewModeReducer from './ViewModeReducer';
+import NoteBookReducer from './NoteBookReducer';
 
 export default combineReducers({
-    view_mode: ViewModeReducer
+    viewmode: ViewModeReducer,
+    notebook: NoteBookReducer
 });

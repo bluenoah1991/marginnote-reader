@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import NoteBookToolbarComponent from './NoteBookToolbarComponent.jsx';
 import NoteBookBottomToolbarComponent from './NoteBookBottomToolbarComponent.jsx';
 
-export default class NoteBookComponent extends Component{
+import {fetchNoteBook} from '../actions/NoteBookActions';
+
+class NoteBookComponent extends Component{
     render(){
         return (
             <div>
@@ -17,4 +20,21 @@ export default class NoteBookComponent extends Component{
             </div>
         );
     }
+
+    componentWillMount(){
+    }
+
+    componentDidMount(){
+        this.props.dispatch(fetchNoteBook(this.props.params.id));
+    }
 }
+
+const IsFetchingSelector = state => state.notebook.isFetching;
+
+function select(state){
+    return {
+        isFetching: IsFetchingSelector(state)
+    };
+}
+
+export default connect(select)(NoteBookComponent);

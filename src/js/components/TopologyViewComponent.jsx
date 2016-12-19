@@ -7,7 +7,7 @@ export default class TopologyViewComponent extends Component{
         return (
             <div>
                 <div className="fix-body-top notebook-tabs-box">
-                    <NoteBookTabsComponent />
+                    <NoteBookTabsComponent noteBookId={this.props.params.id} />
                 </div>
                 <div className="fix-body">
                     {this.props.children}

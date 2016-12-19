@@ -168,9 +168,6 @@ gulp.task('index', function(){
 gulp.task('replace-js-strings', ['webpack', 'minify-js'], function(){
     return gulp.src(dirs.dist + '/main.js')
         .pipe(replace('@@ENV', process.env.GULP_ENV))
-        .pipe(replace('@@CLOUDKIT_CONTAINER_IDENTIFIER', process.env.CLOUDKIT_CONTAINER_IDENTIFIER))
-        .pipe(replace('@@CLOUDKIT_API_TOKEN', process.env.CLOUDKIT_API_TOKEN))
-        .pipe(replace('@@CLOUDKIT_ENV', process.env.CLOUDKIT_ENV))
         .pipe(gulp.dest(dirs.dist));
 });
 

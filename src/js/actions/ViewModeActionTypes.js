@@ -1,5 +1,5 @@
 const ViewModeActionTypes = Object.freeze({
-    SWITCH_VIEW_MODE: 'VIEW_MODE_SWITCH_VIEW_MODE'
+    SWITCH_VIEWMODE: 'VIEW_MODE_SWITCH_VIEWMODE'
 });
 
 export default ViewModeActionTypes;
