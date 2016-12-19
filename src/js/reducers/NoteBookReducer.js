@@ -11,7 +11,7 @@ export default function(state = {}, action){
         case NoteBookActionTypes.FETCH_NOTEBOOK_SUCCESS:
             immutable_state = immutable_state.setIn(['isFetching'], false);
             immutable_state = immutable_state.setIn(['raw'], action.data.raw);
-            immutable_state = immutable_state.setIn(['notes'], action.data.notes());
+            immutable_state = immutable_state.setIn(['title'], action.data.title());
             return immutable_state.toJS();
         default:
             return state;

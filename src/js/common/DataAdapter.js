@@ -27,6 +27,18 @@ export class NoteBook{
     }
 
     static create(identifier, callback){
+        let container = CloudKit.getDefaultContainer();
+        let database = container.publicCloudDatabase;
+
+        database.fetchRecords(identifier).then(function(response){
+            if(response.hasErrors){
+                callback(response.errors[0]);
+            }
+            callback(null, new NoteBook(response.records[0]));
+        });
+    }
+
+    static mockCreate(identifier, callback){
         let raw = requestNoteBookData();
         let notebook = new NoteBook(raw);
         callback(null, notebook);
@@ -34,7 +46,7 @@ export class NoteBook{
 
     // public methods
 
-    notes(){
-        return this.raw.ZBOOKNOTES;
+    title(){
+        return this.raw.fields.title.value;
     }
 }

@@ -30,8 +30,9 @@ export function fetchNoteBook(identifier){
         NoteBook.create(identifier, function(err, notebook){
             if(err){
                 dispatch(fetchNoteBookFailure(err));
+            } else {
+                dispatch(fetchNoteBookSuccess(notebook));
             }
-            dispatch(fetchNoteBookSuccess(notebook));
         })
     };
 }

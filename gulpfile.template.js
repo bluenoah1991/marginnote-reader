@@ -51,7 +51,7 @@ var webpackConfig = {
     },
     output: {
         path: path.resolve(dirs.dist),
-        filename: dirs.mainJsDist
+        filename: files.mainJsDist
     },
     module: {
         loaders: [
@@ -166,7 +166,7 @@ gulp.task('index', function(){
 });
 
 gulp.task('replace-js-strings', ['webpack', 'minify-js'], function(){
-    return gulp.src(dirs.dist + '/main.js')
+    return gulp.src(dirs.dist + '/' + files.mainJsDist)
         .pipe(replace('@@ENV', process.env.GULP_ENV))
         .pipe(gulp.dest(dirs.dist));
 });
