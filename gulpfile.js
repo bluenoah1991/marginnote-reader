@@ -74,6 +74,18 @@ var webpackConfig = {
             }, {
                 enforce: 'post',
                 loader: 'transform-loader/cacheable?envify'
+            }, {
+                enforce: 'post',
+                test: /\.(js|jsx)$/,
+                loader: 'string-replace',
+                query: {
+                    multiple: [
+                        {search: '@@ENV', replace: process.env.GULP_ENV},
+                        {search: '@@CLOUDKIT_CONTAINER_IDENTIFIER', replace: process.env.CLOUDKIT_CONTAINER_IDENTIFIER},
+                        {search: '@@CLOUDKIT_API_TOKEN', replace: process.env.CLOUDKIT_API_TOKEN},
+                        {search: '@@CLOUDKIT_ENV', replace: process.env.CLOUDKIT_ENV}
+                    ]
+                }
             }
         ],
         resolve: {
@@ -165,8 +177,7 @@ gulp.task('index', function(){
         .pipe(gulp.dest(dirs.dist));
 });
 
-// gulp.task('replace-js-strings', ['webpack', 'minify-js'], function(){
-gulp.task('replace-js-strings', ['webpack'], function(){
+gulp.task('replace-js-strings', ['webpack', 'minify-js'], function(){
     return gulp.src(dirs.dist + '/' + files.mainJsDist)
         .pipe(replace('@@ENV', process.env.GULP_ENV))
         .pipe(replace('@@CLOUDKIT_CONTAINER_IDENTIFIER', process.env.CLOUDKIT_CONTAINER_IDENTIFIER))
@@ -217,8 +228,7 @@ var tasks = [
 ];
 
 if(process.env.GULP_ENV === 'production'){
-    tasks.push('minify-css', 'minify-js');
+    tasks.push('minify-css', 'minify-js', 'replace-js-strings');
 }
-tasks.push('replace-js-strings');
 
 gulp.task('default', tasks);

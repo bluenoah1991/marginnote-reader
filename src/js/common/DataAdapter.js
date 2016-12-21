@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // mock
 import {requestNoteBookData} from '../mock';
 
@@ -46,7 +48,73 @@ export class NoteBook{
 
     // public methods
 
+    id(){
+        return this.raw.recordName;
+    }
+
     title(){
         return this.raw.fields.title.value;
+    }
+}
+
+export class Note{
+    constructor(raw){
+        this.raw = raw;
+    }
+
+    static query(notebookId, callback){
+        let container = CloudKit.getDefaultContainer();
+        let database = container.publicCloudDatabase;
+
+        let query = {
+            recordType: 'BookNote',
+            filterBy: [{
+                comparator: 'EQUALS',
+                fieldName: 'topicid',
+                fieldValue: {
+                    value: notebookId
+                }
+            }]
+        };
+
+        database.performQuery(query).then(function(response){
+            if(response.hasErrors){
+                callback(response.errors[0]);
+            }
+            callback(null, _.map(response.records, function(record){
+                return new Note(record);
+            }));
+        });
+    }
+
+    id(){
+        return this.raw.recordName;
+    }
+
+    children(){
+        if(this.raw.fields.mindlinks){
+            return this.raw.fields.mindlinks.value.split('|');
+        } else {
+            return [];
+        }
+    }
+
+    title(){
+        if(this.raw.fields.notetitle){
+            return this.raw.fields.notetitle.value;
+        } else {
+            return null;
+        }
+    }
+
+    mindpos(){
+        if(this.raw.fields.mindpos){
+            let str = this.raw.fields.mindpos.value;
+            return _.map(str.split(','), function(val){
+                return parseFloat(val);
+            });
+        } else {
+            return null;
+        }
     }
 }

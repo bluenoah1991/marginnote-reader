@@ -1,5 +1,6 @@
 import NoteBookActionTypes from './NoteBookActionTypes';
 import {NoteBook} from '../common/DataAdapter';
+import {fetchNotes} from './NoteActions';
 
 export function fetchNoteBookRequest(){
     const action = {
@@ -32,6 +33,7 @@ export function fetchNoteBook(identifier){
                 dispatch(fetchNoteBookFailure(err));
             } else {
                 dispatch(fetchNoteBookSuccess(notebook));
+                dispatch(fetchNotes(notebook.id()));
             }
         })
     };

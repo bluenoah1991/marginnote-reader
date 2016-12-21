@@ -41,6 +41,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "source-map-loader": "^0.1.5",
+    "string-replace-loader": "^1.0.5",
     "transform-loader": "^0.2.3",
     "webpack": "^1.14.0",
     "webpack-notifier": "^1.4.1",
